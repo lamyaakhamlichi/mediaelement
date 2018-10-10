@@ -206,21 +206,21 @@ const HlsNativeRenderer = {
 								}
 								break;
 							case 'networkError':
-								if (data.details === 'manifestLoadError') {
-									if (index < total && mediaFiles[(index + 1)] !== undefined) {
-										node.setSrc(mediaFiles[index++].src);
-										node.load();
-										node.play();
-									} else {
-										const message = 'Network error';
-										mediaElement.generateError(message, mediaFiles);
-										console.error(message);
-									}
-								} else {
+								// if (data.details === 'manifestLoadError') {
+								// 	if (index < total && mediaFiles[(index + 1)] !== undefined) {
+								// 		node.setSrc(mediaFiles[index++].src);
+								// 		node.load();
+								// 		node.play();
+								// 	} else {
+								// 		const message = 'Network error';
+								// 		mediaElement.generateError(message, mediaFiles);
+								// 		console.error(message);
+								// 	}
+								// } else {
 									const message = 'Network error';
 									mediaElement.generateError(message, mediaFiles);
 									console.error(message);
-								}
+								// }
 								break;
 							default:
 								hlsPlayer.destroy();

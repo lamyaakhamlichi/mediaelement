@@ -8,7 +8,7 @@
  * Copyright 2010-2017, John Dyer (http://j.hn/)
  * License: MIT
  *
- */(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
+ */(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(_dereq_,module,exports){
 
 },{}],2:[function(_dereq_,module,exports){
 (function (global){
@@ -2346,27 +2346,16 @@ var HlsNativeRenderer = {
 									hlsPlayer.swapAudioCodec();
 									hlsPlayer.recoverMediaError();
 								} else {
-									var message = 'Cannot recover, last media error recovery failed';
-									mediaElement.generateError(message, node.src);
-									console.error(message);
+									var _message = 'Cannot recover, last media error recovery failed';
+									mediaElement.generateError(_message, node.src);
+									console.error(_message);
 								}
 								break;
 							case 'networkError':
-								if (data.details === 'manifestLoadError') {
-									if (index < total && mediaFiles[index + 1] !== undefined) {
-										node.setSrc(mediaFiles[index++].src);
-										node.load();
-										node.play();
-									} else {
-										var _message = 'Network error';
-										mediaElement.generateError(_message, mediaFiles);
-										console.error(_message);
-									}
-								} else {
-									var _message2 = 'Network error';
-									mediaElement.generateError(_message2, mediaFiles);
-									console.error(_message2);
-								}
+								var message = 'Network error';
+								mediaElement.generateError(message, mediaFiles);
+								console.error(message);
+
 								break;
 							default:
 								hlsPlayer.destroy();
